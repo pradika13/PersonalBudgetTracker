@@ -1,0 +1,587 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="using:PersonalBudgetTracker"
+        x:Class="PersonalBudgetTracker.MainWindow"
+        Title="Personal Budget Tracker"
+        Width="1200"
+        Height="820"
+        MinWidth="1050"
+        MinHeight="720"
+        Background="#F4F7FA">
+
+    <ScrollViewer>
+        <StackPanel Margin="28" Spacing="16">
+
+            <!-- HEADER -->
+            <Border Background="#173F73"
+                    CornerRadius="14"
+                    Padding="26,20">
+
+                <Grid ColumnDefinitions="Auto,*,Auto">
+
+                    <Border Grid.Column="0"
+                            Width="58"
+                            Height="58"
+                            Background="#1E5AA8"
+                            CornerRadius="29"
+                            Margin="0,0,18,0">
+
+                        <TextBlock Text="$"
+                                   FontSize="30"
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </Border>
+
+                    <StackPanel Grid.Column="1"
+                                VerticalAlignment="Center">
+
+                        <TextBlock Text="PERSONAL BUDGET TRACKER"
+                                   FontSize="27"
+                                   FontWeight="Bold"
+                                   Foreground="White"/>
+
+                        <TextBlock Text="Track your income, manage your expenses, build a better tomorrow"
+                                   FontSize="13"
+                                   Foreground="#D7E5F5"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+
+                    <Border Grid.Column="2"
+                            Background="#315A87"
+                            CornerRadius="10"
+                            Padding="18,10"
+                            VerticalAlignment="Center">
+
+                        <StackPanel>
+                            <TextBlock Text="TODAY"
+                                       FontSize="10"
+                                       FontWeight="Bold"
+                                       Foreground="#C7D8EB"
+                                       HorizontalAlignment="Center"/>
+
+                            <TextBlock Text="16 September 2026"
+                                       FontSize="13"
+                                       FontWeight="SemiBold"
+                                       Foreground="White"
+                                       Margin="0,3,0,0"/>
+                        </StackPanel>
+
+                    </Border>
+                </Grid>
+            </Border>
+
+
+            <!-- SUMMARY CARDS -->
+            <Grid ColumnDefinitions="*,*,*"
+                  ColumnSpacing="14">
+
+                <!-- INCOME -->
+                <Border Grid.Column="0"
+                        Background="#EFFAF3"
+                        CornerRadius="12"
+                        Padding="20">
+
+                    <Grid ColumnDefinitions="Auto,*">
+
+                        <Border Width="48"
+                                Height="48"
+                                Background="#D9F3E2"
+                                CornerRadius="24">
+
+                            <TextBlock Text="↑"
+                                       FontSize="27"
+                                       FontWeight="Bold"
+                                       Foreground="#169B4A"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="15,0,0,0">
+
+                            <TextBlock Text="TOTAL INCOME"
+                                       FontSize="11"
+                                       FontWeight="Bold"
+                                       Foreground="#55728C"/>
+
+                            <TextBlock x:Name="IncomeText"
+                                       Text="$0.00"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       Foreground="#169B4A"
+                                       Margin="0,3,0,0"/>
+
+                            <TextBlock Text="Total money received"
+                                       FontSize="11"
+                                       Foreground="#667784"
+                                       Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+
+                <!-- EXPENSES -->
+                <Border Grid.Column="1"
+                        Background="#FFF2F2"
+                        CornerRadius="12"
+                        Padding="20">
+
+                    <Grid ColumnDefinitions="Auto,*">
+
+                        <Border Width="48"
+                                Height="48"
+                                Background="#FFE0E0"
+                                CornerRadius="24">
+
+                            <TextBlock Text="↓"
+                                       FontSize="27"
+                                       FontWeight="Bold"
+                                       Foreground="#E53935"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="15,0,0,0">
+
+                            <TextBlock Text="TOTAL EXPENSES"
+                                       FontSize="11"
+                                       FontWeight="Bold"
+                                       Foreground="#55728C"/>
+
+                            <TextBlock x:Name="ExpenseText"
+                                       Text="$0.00"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       Foreground="#E53935"
+                                       Margin="0,3,0,0"/>
+
+                            <TextBlock Text="Total money spent"
+                                       FontSize="11"
+                                       Foreground="#667784"
+                                       Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+
+                <!-- BALANCE -->
+                <Border Grid.Column="2"
+                        Background="#EEF7FF"
+                        CornerRadius="12"
+                        Padding="20">
+
+                    <Grid ColumnDefinitions="Auto,*">
+
+                        <Border Width="48"
+                                Height="48"
+                                Background="#DCEEFF"
+                                CornerRadius="24">
+
+                            <TextBlock Text="$"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       Foreground="#1976D2"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="15,0,0,0">
+
+                            <TextBlock Text="CURRENT BALANCE"
+                                       FontSize="11"
+                                       FontWeight="Bold"
+                                       Foreground="#55728C"/>
+
+                            <TextBlock x:Name="BalanceText"
+                                       Text="$0.00"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       Foreground="#1976D2"
+                                       Margin="0,3,0,0"/>
+
+                            <TextBlock Text="Income minus expenses"
+                                       FontSize="11"
+                                       Foreground="#667784"
+                                       Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+
+
+            <!-- ADD TRANSACTION -->
+            <Border Background="White"
+                    BorderBrush="#E1E8EF"
+                    BorderThickness="1"
+                    CornerRadius="12"
+                    Padding="22">
+
+                <StackPanel Spacing="14">
+
+                    <!-- SECTION TITLE -->
+                    <Grid ColumnDefinitions="Auto,*">
+
+                        <Border Width="38"
+                                Height="38"
+                                Background="#1976D2"
+                                CornerRadius="8">
+
+                            <TextBlock Text="+"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="12,0,0,0">
+
+                            <TextBlock Text="Add New Transaction"
+                                       FontSize="19"
+                                       FontWeight="Bold"
+                                       Foreground="#18354F"/>
+
+                            <TextBlock Text="Enter the details below to record a new income or expense."
+                                       FontSize="12"
+                                       Foreground="#7189A0"
+                                       Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Grid>
+
+
+                    <!-- ROW 1 -->
+                    <Grid ColumnDefinitions="*,1.35*"
+                          ColumnSpacing="20">
+
+                        <StackPanel Grid.Column="0"
+                                    Spacing="5">
+
+                            <TextBlock Text="Amount ($) *"
+                                       FontSize="11"
+                                       FontWeight="Bold"
+                                       Foreground="#29465E"/>
+
+                            <TextBox x:Name="AmountBox"
+                                     PlaceholderText="$  0.00"
+                                     Height="40"
+                                     FontSize="14"/>
+                        </StackPanel>
+
+
+                        <StackPanel Grid.Column="1"
+                                    Spacing="5">
+
+                            <TextBlock Text="Description *"
+                                       FontSize="11"
+                                       FontWeight="Bold"
+                                       Foreground="#29465E"/>
+
+                            <TextBox x:Name="DescriptionBox"
+                                     PlaceholderText="Enter transaction description (e.g. Grocery shopping)"
+                                     Height="40"
+                                     FontSize="14"/>
+                        </StackPanel>
+                    </Grid>
+
+
+                    <!-- ROW 2 -->
+                    <Grid ColumnDefinitions="*,*,*"
+                          ColumnSpacing="20">
+
+                        <StackPanel Grid.Column="0"
+                                    Spacing="5">
+
+                            <TextBlock Text="Transaction Type *"
+                                       FontSize="11"
+                                       FontWeight="Bold"
+                                       Foreground="#29465E"/>
+
+                            <ComboBox x:Name="TypeBox"
+                                      SelectedIndex="0"
+                                      Height="40"
+                                      HorizontalAlignment="Stretch"
+                                      SelectionChanged="TypeBox_SelectionChanged">
+
+                                <ComboBoxItem Content="Income"/>
+                                <ComboBoxItem Content="Expense"/>
+                            </ComboBox>
+                        </StackPanel>
+
+
+                        <StackPanel Grid.Column="1"
+                                    Spacing="5">
+
+                            <TextBlock Text="Category"
+                                       FontSize="11"
+                                       FontWeight="Bold"
+                                       Foreground="#29465E"/>
+
+                            <ComboBox x:Name="CategoryBox"
+                                      SelectedIndex="0"
+                                      Height="40"
+                                      HorizontalAlignment="Stretch">
+
+                                <ComboBoxItem Content="Food"/>
+                                <ComboBoxItem Content="Transport"/>
+                                <ComboBoxItem Content="Bills"/>
+                                <ComboBoxItem Content="Entertainment"/>
+                                <ComboBoxItem Content="Shopping"/>
+                                <ComboBoxItem Content="Other"/>
+                            </ComboBox>
+                        </StackPanel>
+
+
+                        <StackPanel Grid.Column="2"
+                                    Spacing="5">
+
+                            <TextBlock Text="Date *"
+                                       FontSize="11"
+                                       FontWeight="Bold"
+                                       Foreground="#29465E"/>
+
+                            <DatePicker x:Name="TransactionDate"
+                                        Height="40"
+                                        HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                    </Grid>
+
+
+                    <!-- ACTION ROW -->
+                    <Grid ColumnDefinitions="Auto,Auto,*,Auto"
+                          ColumnSpacing="10">
+
+                        <Button Grid.Column="0"
+                                Content="+   Add Transaction"
+                                Click="AddTransaction_Click"
+                                Background="#1976D2"
+                                Foreground="White"
+                                FontSize="13"
+                                FontWeight="Bold"
+                                Padding="22,11"/>
+
+                        <Button Grid.Column="1"
+                                Content="Clear Form"
+                                Click="Clear_Click"
+                                Background="#EEF2F5"
+                                Foreground="#29465E"
+                                FontWeight="SemiBold"
+                                Padding="18,11"/>
+
+                        <TextBlock x:Name="MessageText"
+                                   Grid.Column="2"
+                                   Margin="12,0"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Foreground="#455A64"
+                                   VerticalAlignment="Center"
+                                   TextWrapping="Wrap"/>
+
+                        <Border Grid.Column="3"
+                                Background="#EDF7FF"
+                                BorderBrush="#B9DCF8"
+                                BorderThickness="1"
+                                CornerRadius="7"
+                                Padding="12,8">
+
+                            <TextBlock Text="For expenses, select a category."
+                                       FontSize="11"
+                                       Foreground="#31658E"/>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+
+            <!-- TRANSACTION HISTORY -->
+            <Border Background="White"
+                    BorderBrush="#E1E8EF"
+                    BorderThickness="1"
+                    CornerRadius="12"
+                    Padding="22">
+
+                <StackPanel Spacing="12">
+
+                    <!-- TITLE -->
+                    <Grid ColumnDefinitions="Auto,*">
+
+                        <Border Width="38"
+                                Height="38"
+                                Background="#1976D2"
+                                CornerRadius="8">
+
+                            <TextBlock Text="≡"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="12,0,0,0">
+
+                            <TextBlock Text="Transaction History"
+                                       FontSize="19"
+                                       FontWeight="Bold"
+                                       Foreground="#18354F"/>
+
+                            <TextBlock Text="Your recorded income and expenses"
+                                       FontSize="12"
+                                       Foreground="#7189A0"
+                                       Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Grid>
+
+
+                    <!-- TABLE HEADER -->
+                    <Border Background="#F1F5F8"
+                            CornerRadius="7"
+                            Padding="11">
+
+                        <Grid ColumnDefinitions="60,120,110,*,160,130">
+
+                            <TextBlock Grid.Column="0"
+                                       Text="ID"
+                                       FontSize="10"
+                                       FontWeight="Bold"
+                                       Foreground="#55728C"/>
+
+                            <TextBlock Grid.Column="1"
+                                       Text="DATE"
+                                       FontSize="10"
+                                       FontWeight="Bold"
+                                       Foreground="#55728C"/>
+
+                            <TextBlock Grid.Column="2"
+                                       Text="TYPE"
+                                       FontSize="10"
+                                       FontWeight="Bold"
+                                       Foreground="#55728C"/>
+
+                            <TextBlock Grid.Column="3"
+                                       Text="DESCRIPTION"
+                                       FontSize="10"
+                                       FontWeight="Bold"
+                                       Foreground="#55728C"/>
+
+                            <TextBlock Grid.Column="4"
+                                       Text="CATEGORY"
+                                       FontSize="10"
+                                       FontWeight="Bold"
+                                       Foreground="#55728C"/>
+
+                            <TextBlock Grid.Column="5"
+                                       Text="AMOUNT"
+                                       FontSize="10"
+                                       FontWeight="Bold"
+                                       Foreground="#55728C"/>
+                        </Grid>
+                    </Border>
+
+
+                    <!-- TRANSACTION LIST -->
+                    <ListBox x:Name="TransactionList"
+                             Height="145"
+                             SelectionMode="Single"
+                             Background="Transparent"
+                             BorderThickness="0">
+
+                        <ListBox.ItemTemplate>
+
+                            <DataTemplate x:DataType="local:TransactionDisplay">
+
+                                <Border BorderBrush="#EDF1F4"
+                                        BorderThickness="0,0,0,1"
+                                        Padding="11,8">
+
+                                    <Grid ColumnDefinitions="60,120,110,*,160,130">
+
+                                        <TextBlock Grid.Column="0"
+                                                   Text="{Binding Id}"
+                                                   VerticalAlignment="Center"/>
+
+                                        <TextBlock Grid.Column="1"
+                                                   Text="{Binding DateDisplay}"
+                                                   VerticalAlignment="Center"/>
+
+                                        <TextBlock Grid.Column="2"
+                                                   Text="{Binding Type}"
+                                                   FontWeight="SemiBold"
+                                                   VerticalAlignment="Center"/>
+
+                                        <TextBlock Grid.Column="3"
+                                                   Text="{Binding Description}"
+                                                   VerticalAlignment="Center"/>
+
+                                        <TextBlock Grid.Column="4"
+                                                   Text="{Binding Category}"
+                                                   VerticalAlignment="Center"/>
+
+                                        <TextBlock Grid.Column="5"
+                                                   Text="{Binding AmountDisplay}"
+                                                   FontWeight="Bold"
+                                                   VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Border>
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+
+                    <!-- BOTTOM ACTIONS -->
+                    <Grid ColumnDefinitions="*,Auto,Auto"
+                          ColumnSpacing="10">
+
+                        <TextBlock Grid.Column="0"
+                                   Text="Select a transaction in the list to delete it."
+                                   FontSize="11"
+                                   Foreground="#7189A0"
+                                   VerticalAlignment="Center"/>
+
+                        <Button Grid.Column="1"
+                                Content="Delete Selected"
+                                Click="DeleteTransaction_Click"
+                                Background="#FFF0F0"
+                                Foreground="#D32F2F"
+                                BorderBrush="#F2B8B8"
+                                BorderThickness="1"
+                                FontWeight="SemiBold"
+                                Padding="18,9"/>
+
+                        <Button Grid.Column="2"
+                                Content="Save Data"
+                                Click="Save_Click"
+                                Background="#EAF4FF"
+                                Foreground="#1976D2"
+                                BorderBrush="#B8D9F7"
+                                BorderThickness="1"
+                                FontWeight="SemiBold"
+                                Padding="20,9"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+
+            <!-- FOOTER -->
+            <Grid ColumnDefinitions="*,Auto"
+                  Margin="3,0,3,5">
+
+                <TextBlock Text="Personal Budget Tracker  |  ITS203 – Object-Oriented Programming Project"
+                           FontSize="10"
+                           Foreground="#78909C"/>
+
+                <TextBlock Grid.Column="1"
+                           Text="Manage Today  •  Build Tomorrow"
+                           FontSize="10"
+                           Foreground="#78909C"/>
+            </Grid>
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>
