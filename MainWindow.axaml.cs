@@ -325,10 +325,11 @@ namespace PersonalBudgetTracker
                 budgetManager.ReplaceTransactions(
                     loaded);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageText.Text =
-                    "Saved data could not be loaded.";
+                "Saved data could not be loaded: "
+                + ex.Message;
             }
         }
     }
