@@ -95,6 +95,27 @@ namespace PersonalBudgetTracker
 
                 string type =
                     GetComboBoxText(TypeBox);
+                if (string.IsNullOrWhiteSpace(type))
+                {        
+                    MessageText.Text =
+                    "Please select a transaction type.";
+
+                return;
+                }
+
+                if (type == "Expense")
+{
+    string category =
+        GetComboBoxText(CategoryBox);
+
+    if (string.IsNullOrWhiteSpace(category))
+    {
+        MessageText.Text =
+            "Please select an expense category.";
+
+        return;
+    }
+}
 
                 Transaction transaction;
 
