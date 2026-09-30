@@ -172,8 +172,7 @@ namespace PersonalBudgetTracker
                 if (TransactionList.SelectedItem
                     is not TransactionDisplay selected)
                 {
-                    MessageText.Text =
-                        "Please select a transaction to delete.";
+                    MessageText.Text = "Please select a transaction to delete.";
 
                     return;
                 }
