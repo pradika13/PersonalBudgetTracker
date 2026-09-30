@@ -56,11 +56,9 @@ namespace PersonalBudgetTracker
 
                     return;
                 }
-
-                if (amount <= 0)
+                if (amount <= 0 || amount > 1000000)
                 {
-                    MessageText.Text =
-                        "Amount must be greater than zero.";
+                    MessageText.Text = "Amount must be greater than zero and less than $1,000,000.";
 
                     return;
                 }
