@@ -365,7 +365,7 @@
                                 Padding="22,11"/>
 
                         <Button Grid.Column="1"
-                                Content="Clear Form"
+                                Content="Clear Form &amp; Reset"
                                 Click="Clear_Click"
                                 Background="#EEF2F5"
                                 Foreground="#29465E"
