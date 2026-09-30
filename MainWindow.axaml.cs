@@ -213,7 +213,7 @@ namespace PersonalBudgetTracker
                 SaveTransactions();
 
                 MessageText.Text =
-                    "Data saved successfully.";
+                $"{budgetManager.Transactions.Count} transaction(s) saved successfully.";
             }
             catch (Exception ex)
             {
